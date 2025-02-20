@@ -215,7 +215,7 @@ func (c *Command) defaultCmd(isRoot bool) error {
 		return c.run(cmd.NewInterpreter("context"), "", true, true)
 	}
 
-	defCmd := "pod"
+	defCmd := "chartReleaser"
 	if isRoot {
 		defCmd = "ctx"
 	}
@@ -328,10 +328,10 @@ func (c *Command) exec(p *cmd.Interpreter, gvr client.GVR, comp model.Component,
 			log.Debug().Msgf("History %v", c.app.cmdHistory.List())
 			log.Error().Msg(string(debug.Stack()))
 
-			p := cmd.NewInterpreter("pod")
+			p := cmd.NewInterpreter("chartRelease")
 			cmds := c.app.cmdHistory.List()
 			currentCommand := cmds[c.app.cmdHistory.CurrentIndex()]
-			if currentCommand != "pod" {
+			if currentCommand != "chartRelease" {
 				p = p.Reset(currentCommand)
 			}
 			err = c.run(p, "", true, true)

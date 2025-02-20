@@ -461,7 +461,7 @@ func (a *App) switchContext(ci *cmd.Interpreter, force bool) error {
 		p := cmd.NewInterpreter(a.Config.ActiveView())
 		p.ResetContextArg()
 		if p.IsContextCmd() {
-			a.Config.SetActiveView("pod")
+			a.Config.SetActiveView("chartRelease")
 		}
 		ns := a.Config.ActiveNamespace()
 		if !a.Conn().IsValidNamespace(ns) {
